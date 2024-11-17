@@ -1,16 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SportController;
+use App\Http\Controllers\StudentController;
+Route::resource('students', StudentController::class);
 
-//Route::post('/sports', [SportController::class, 'store']);
-
-Route::get('/example', function () {
-    error_log("Mensaje de ");
-    return 'Página encontrada';
-});
-
-Route::post('/sports', function () {
-    error_log("Mensaje de Post");
-    return 'Página GET encontrada';
+Route::post('test', function (Request $request) {
+    error_log("test");
+    return response()->json([
+        'message' => 'Hello World!'
+    ], 200);
 });

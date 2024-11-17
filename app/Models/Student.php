@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Month extends Model
+class Student extends Model
 {
     use HasFactory;
 
-    protected $table = 'months';
-
-    protected $fillable = [
-        'n_month',
-        'slug_month',
-    ];
+    protected $table = 'students';
+    protected $fillable = ['fname', 'lname', 'email', 'password'];
 }
