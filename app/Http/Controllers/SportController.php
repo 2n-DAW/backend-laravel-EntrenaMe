@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sport;
 use App\Http\Requests\StoreSportRequest;
-
+use App\Http\Requests\UpdateSportRequest;
 
 class SportController extends Controller
 {
@@ -52,6 +52,22 @@ class SportController extends Controller
         } catch (\Exception $e) {
             error_log( $e->getMessage());
             return response()->json(['error' => 'Error getting sport'], 500);
+        }
+    }
+    
+    public function update(UpdateSportRequest $request)
+    {
+        try {
+            $id_sport = $request->input('id_sport');
+            error_log('id_sport' . $id_sport);
+            
+            $sport = Sport::find($id_sport);
+            $sport->update($request->validated());
+            error_log('update' . $sport);
+            return response()->json($sport, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error updating sport'], 500);
         }
     }
     

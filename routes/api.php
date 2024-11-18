@@ -15,3 +15,4 @@ Route::post('sports', [SportController::class, 'store']); //Create sport
 Route::get('sports', [SportController::class, 'getAll']); //Get all sports
 Route::get('sports/{id}', [SportController::class, 'getById']); //Get sport by id
 Route::get('sports/slug/{slug}', [SportController::class, 'getBySlug']); //Get sport by slug
+Route::put('sports', [SportController::class, 'update']); //Update sport by id
