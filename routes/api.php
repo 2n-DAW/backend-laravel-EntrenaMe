@@ -13,3 +13,4 @@ use App\Http\Controllers\SportController;
 
 Route::post('sports', [SportController::class, 'store']); //Create sport
 Route::get('sports', [SportController::class, 'getAll']); //Get all sports
+Route::get('sports/{id}', [SportController::class, 'getById']); //Get sport by id

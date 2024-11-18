@@ -31,4 +31,16 @@ class SportController extends Controller
         }
     }
     
+    public function getById($id_sport)
+    {
+        try {
+            $sport = Sport::find($id_sport);
+            error_log('getById' . $sport);
+            return response()->json($sport, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sport'], 500);
+        }
+    }
+    
 }
