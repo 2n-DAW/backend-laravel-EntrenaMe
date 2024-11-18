@@ -43,4 +43,16 @@ class SportController extends Controller
         }
     }
     
+    public function getBySlug($slug_sport)
+    {
+        try {
+            $sport = Sport::where('slug_sport', $slug_sport)->first();
+            error_log('getBySlug' . $sport);
+            return response()->json($sport, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sport'], 500);
+        }
+    }
+    
 }
