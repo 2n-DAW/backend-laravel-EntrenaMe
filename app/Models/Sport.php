@@ -15,6 +15,8 @@ class Sport extends Model
         'img_sport',
         'slug_sport',
     ];
+    public $timestamps = false;
+
 
     public function courts()
     {
