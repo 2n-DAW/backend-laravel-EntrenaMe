@@ -12,3 +12,4 @@ use App\Http\Controllers\SportController;
 // });
 
 Route::post('sports', [SportController::class, 'store']); //Create sport
+Route::get('sports', [SportController::class, 'getAll']); //Get all sports

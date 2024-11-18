@@ -19,4 +19,16 @@ class SportController extends Controller
             return response()->json(['error' => 'Error creating sport'], 500);
         }
     }
+    
+    public function getAll()
+    {
+        try {
+            $sports = Sport::all();
+            return response()->json($sports, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sports'], 500);
+        }
+    }
+    
 }
