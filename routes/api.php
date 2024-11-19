@@ -22,4 +22,5 @@ Route::prefix('sports')->group(function () {
 Route::prefix('courts')->group(function () {
     Route::post('/', [CourtController::class, 'store']); //Create court
     Route::get('/', [CourtController::class, 'getAll']); //Get all courts
+    Route::get('/{id}', [CourtController::class, 'getById']); //Get court by id
 });

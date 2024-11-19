@@ -36,4 +36,16 @@ class CourtController extends Controller
         }
     }
     
+    public function getById($id_court)
+    {
+        try {
+            $court = Court::Where('id_court', $id_court)->first();
+            
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sport'], 500);
+        }
+    }
+    
 }
