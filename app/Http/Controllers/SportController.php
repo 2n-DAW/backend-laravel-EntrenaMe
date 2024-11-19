@@ -2,23 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\utils;
 use App\Models\Sport;
 use App\Http\Requests\StoreSportRequest;
 use App\Http\Requests\UpdateSportRequest;
 
 class SportController extends Controller
 {
-    public function store(StoreSportRequest $request)
-    {
-        try {
-            $sport = Sport::create($request->validated());
-            error_log('store' . $sport);
-            return response()->json($sport, 201);
-        } catch (\Exception $e) {
-            error_log( $e->getMessage());
-            return response()->json(['error' => 'Error creating sport'], 500);
-        }
+    
+
+public function store(StoreSportRequest $request)
+{
+    try {
+        $validated = $request->validated();
+        $validated['slug_sport'] = utils::getSlug($validated['n_sport']);
+
+        $sport = Sport::create($validated);
+        error_log('store' . $sport);
+        return response()->json($sport, 201);
+        
+    } catch (\Exception $e) {
+        error_log($e->getMessage());
+        return response()->json(['error' => 'Error creating sport'], 500);
     }
+}
+
     
     public function getAll()
     {

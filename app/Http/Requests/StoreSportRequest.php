@@ -16,7 +16,7 @@ class StoreSportRequest extends FormRequest
         return [
             'n_sport' => 'required|string|max:255',
             'img_sport' => 'nullable|string|max:255',
-            'slug_sport' => 'nullable|string|max:255',
+            //'slug_sport' => 'nullable|string|max:255',
         ];
     }
 }
