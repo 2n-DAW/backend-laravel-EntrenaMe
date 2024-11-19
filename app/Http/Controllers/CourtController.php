@@ -48,4 +48,15 @@ class CourtController extends Controller
         }
     }
     
+    public function getBySlug($slug_court)
+    {
+        try {
+            $court = Court::where('slug_court', $slug_court)->first();
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sport'], 500);
+        }
+    }
+    
 }
