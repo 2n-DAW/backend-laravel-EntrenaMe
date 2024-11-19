@@ -24,4 +24,5 @@ Route::prefix('courts')->group(function () {
     Route::get('/', [CourtController::class, 'getAll']); //Get all courts
     Route::get('/{id}', [CourtController::class, 'getById']); //Get court by id
     Route::get('/slug/{slug}', [CourtController::class, 'getBySlug']); //Get court by slug
+    Route::put('/', [CourtController::class, 'update']); //Update court by id
 });
