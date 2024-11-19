@@ -8,24 +8,29 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id_user');
-            $table->string('img_user')->nullable();
-            $table->string('email')->unique();
+            $table->id();
+            $table->timestamps();
             $table->string('username')->unique();
             $table->string('password');
-            $table->enum('type_user', ['admin', 'client', 'instructor']);
+            $table->string('email');
+            $table->string('type');
+            $table->boolean('is_active');
+            $table->string('photo');
         });
     }
-    
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
     }

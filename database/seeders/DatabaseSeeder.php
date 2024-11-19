@@ -2,22 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\Mesa;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
+        $categories = Category::factory()->count(7)->create();
+        $mesas = Mesa::factory()->count(30)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-    }
+        foreach ($mesas as $mesa) {
+            $mesa->categories()->attach($categories->random(rand(1, 3)));
+        } //attach category in mesa
+    } //run
 }
