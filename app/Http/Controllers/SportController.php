@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\utils;
 use App\Models\Sport;
-use App\Http\Requests\StoreSportRequest;
-use App\Http\Requests\UpdateSportRequest;
+use App\Http\Requests\Sport\StoreSportRequest;
+use App\Http\Requests\Sport\UpdateSportRequest;
 
 class SportController extends Controller
 {

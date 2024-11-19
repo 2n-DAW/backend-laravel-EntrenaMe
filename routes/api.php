@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SportController;
+use App\Http\Controllers\CourtController;
 
 
 // Route::post('sports', function()
@@ -16,4 +17,8 @@ Route::prefix('sports')->group(function () {
     Route::get('/slug/{slug}', [SportController::class, 'getBySlug']); //Get sport by slug
     Route::put('/', [SportController::class, 'update']); //Update sport by id
     Route::delete('/{id}', [SportController::class, 'delete']); //Delete sport by id
+});
+
+Route::prefix('courts')->group(function () {
+    Route::post('/', [CourtController::class, 'store']); //Create court
 });

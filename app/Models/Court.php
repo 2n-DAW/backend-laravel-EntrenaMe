@@ -16,6 +16,8 @@ class Court extends Model
         'img_court',
         'slug_court',
     ];
+    
+    public $timestamps = false;
 
     public function sports()
     {
