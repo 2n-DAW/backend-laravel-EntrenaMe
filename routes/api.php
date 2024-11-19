@@ -15,4 +15,5 @@ Route::prefix('sports')->group(function () {
     Route::get('/{id}', [SportController::class, 'getById']); //Get sport by id
     Route::get('/slug/{slug}', [SportController::class, 'getBySlug']); //Get sport by slug
     Route::put('/', [SportController::class, 'update']); //Update sport by id
+    Route::delete('/{id}', [SportController::class, 'delete']); //Delete sport by id
 });

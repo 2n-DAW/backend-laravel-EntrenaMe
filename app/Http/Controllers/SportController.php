@@ -79,4 +79,18 @@ public function store(StoreSportRequest $request)
         }
     }
     
+    public function delete($id_sport)
+    {
+        try {
+            $sport = Sport::find($id_sport);
+            $sport->delete();
+            
+            error_log('delete' . $sport);
+            return response()->json($sport, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error deleting sport'], 500);
+        }
+    }
+    
 }
