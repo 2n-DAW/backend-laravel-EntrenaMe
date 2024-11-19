@@ -24,4 +24,16 @@ class CourtController extends Controller
             return response()->json(['error' => 'Error creating sport'], 500);
         }
     }
+    
+    public function getAll()
+    {
+        try {
+            $courts = Court::all();
+            return response()->json($courts, 200);
+        } catch (\Exception $e) {
+            error_log( $e->getMessage());
+            return response()->json(['error' => 'Error getting sports'], 500);
+        }
+    }
+    
 }
