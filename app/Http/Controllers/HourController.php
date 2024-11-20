@@ -21,4 +21,15 @@ class HourController extends Controller
             return response()->json(['error' => 'Error creating hour'], 500);
         }
     }
+    
+    public function getAll()
+    {
+        try {
+            $hours = Hour::all();
+            return response()->json($hours, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error getting hours'], 500);
+        }
+    }
 }

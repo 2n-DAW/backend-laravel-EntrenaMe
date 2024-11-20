@@ -31,4 +31,5 @@ Route::prefix('courts')->group(function () {
 
 Route::prefix('hours')->group(function () {
     Route::post('/', [HourController::class, 'store']); //Create hours
+    Route::get('/', [HourController::class, 'getAll']); //Get all hours
 });
