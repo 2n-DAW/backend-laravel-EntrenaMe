@@ -13,7 +13,7 @@ class CourtHourController extends Controller
     {
         try {
             $validated = $request->validated();
-            
+
             $court = CourtHour::create($validated);
             error_log('store' . $court);
             return response()->json($court, 201);
@@ -22,14 +22,24 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error creating court'], 500);
         }
     }
-    
-public function getAll()
-{
-    try {
-        $courts = CourtHour::with(['Court', 'Hour'])->get();
-        return response()->json($courts, 200);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Error fetching courts'], 500);
+
+    public function getAll()
+    {
+        try {
+            $courts = CourtHour::with(['Court', 'Hour'])->get();
+            return response()->json($courts, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error fetching courts'], 500);
+        }
     }
-}
+
+    public function getById($id_court_hour)
+    {
+        try {
+            $court = CourtHour::with(['Court', 'Hour'])->find($id_court_hour);
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error fetching court'], 500);
+        }
+    }
 }
