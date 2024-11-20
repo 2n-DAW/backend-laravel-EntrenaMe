@@ -77,4 +77,16 @@ class CourtController extends Controller
             return response()->json(['error' => 'Error updating court'], 500);
         }
     }
+    
+    public function delete($id_court)
+    {
+        try {
+            $court = Court::Where('id_court', $id_court)->first();
+            $court->delete();
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error deleting court'], 500);
+        }
+    }
 }
