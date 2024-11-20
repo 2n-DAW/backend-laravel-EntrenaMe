@@ -43,4 +43,5 @@ Route::prefix('courtsHours')->group(function () {
     Route::get('/', [CourtHourController::class, 'getAll']); //Get all court hours
     Route::get('/{id}', [CourtHourController::class, 'getById']); //Get court hour by id
     Route::put('/', [CourtHourController::class, 'update']); //Update court hour by id
+    Route::delete('/{id}', [CourtHourController::class, 'delete']); //Delete court hour by id
 });

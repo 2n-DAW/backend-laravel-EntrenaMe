@@ -56,6 +56,15 @@ class CourtHourController extends Controller
         }
     }
     
-    
+      public function delete($id_court_hour)
+    {
+        try {
+            $court = CourtHour::find($id_court_hour);
+            $court->delete();
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error deleting court'], 500);
+        }
+    }
     
 }
