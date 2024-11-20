@@ -67,4 +67,24 @@ class CourtHourController extends Controller
         }
     }
     
+    public function getByCourtId($id_court)
+    {
+        try {
+            $courts = CourtHour::with(['Court', 'Hour'])->where('id_court', $id_court)->get();
+            return response()->json($courts, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error fetching court'], 500);
+        }
+    }
+    
+    public function getByHourId($id_hour)
+    {
+        try {
+            $courts = CourtHour::with(['Court', 'Hour'])->where('id_hour', $id_hour)->get();
+            return response()->json($courts, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error fetching court'], 500);
+        }
+    }
+    
 }
