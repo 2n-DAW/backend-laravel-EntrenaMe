@@ -32,4 +32,15 @@ class HourController extends Controller
             return response()->json(['error' => 'Error getting hours'], 500);
         }
     }
+    
+    public function getById($id_hour)
+    {
+        try {
+            $hour = Hour::find($id_hour);
+            return response()->json($hour, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error getting hour'], 500);
+        }
+    }
 }
