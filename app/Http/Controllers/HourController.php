@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hour;
 use App\Http\Requests\Hour\StoreHourRequest;
+use App\Http\Requests\Hour\UpdateHourRequest;
 
 class HourController extends Controller
 {
@@ -41,6 +42,23 @@ class HourController extends Controller
         } catch (\Exception $e) {
             error_log($e->getMessage());
             return response()->json(['error' => 'Error getting hour'], 500);
+        }
+    }
+    
+    public function update(UpdateHourRequest $request)
+    {
+        try {
+            error_log($request);
+            $validated = $request->validated();
+            $id_hour = $validated['id_hour'];
+            error_log('id_hour' . $id_hour);
+            $hour = Hour::find($id_hour);
+            $hour->update($validated);
+            
+            return response()->json($hour, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error updating hour'], 500);
         }
     }
 }

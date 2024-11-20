@@ -4,7 +4,7 @@ namespace App\Http\Requests\Hour;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreHourRequest extends FormRequest
+class UpdateHourRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,7 +14,7 @@ class StoreHourRequest extends FormRequest
     public function rules()
     {
         return [
-        
+            'id_hour' => 'required|integer',
             'slot_hour' => 'required|string|max:255',
         ];
     }
