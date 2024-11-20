@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\HourController;
+use App\Http\Controllers\CourtHourController;
 
 
 // Route::post('sports', function()
@@ -35,4 +36,9 @@ Route::prefix('hours')->group(function () {
     Route::get('/{id}', [HourController::class, 'getById']); //Get hour by id
     Route::put('/', [HourController::class, 'update']); //Update hour by id
     Route::delete('/{id}', [HourController::class, 'delete']); //Delete hour by id
+});
+
+Route::prefix('courtsHours')->group(function () {
+    Route::post('/', [CourtHourController::class, 'store']); //Create court hours
+    Route::get('/', [CourtHourController::class, 'getAll']); //Get all court hours
 });

@@ -10,8 +10,14 @@ class CourtHour extends Model
     use HasFactory;
 
     protected $table = 'courts_hours';
+     
+    protected $primaryKey = 'id_court_hour';
+
+    public $timestamps = false;
+
 
     protected $fillable = [
+        'id_court_hour',
         'id_court',
         'id_hour',
         'day_number',
