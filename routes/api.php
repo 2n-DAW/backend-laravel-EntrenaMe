@@ -34,4 +34,5 @@ Route::prefix('hours')->group(function () {
     Route::get('/', [HourController::class, 'getAll']); //Get all hours
     Route::get('/{id}', [HourController::class, 'getById']); //Get hour by id
     Route::put('/', [HourController::class, 'update']); //Update hour by id
+    Route::delete('/{id}', [HourController::class, 'delete']); //Delete hour by id
 });

@@ -61,4 +61,16 @@ class HourController extends Controller
             return response()->json(['error' => 'Error updating hour'], 500);
         }
     }
+    
+    public function delete($id_hour)
+    {
+        try {
+            $hour = Hour::find($id_hour);
+            $hour->delete();
+            return response()->json($hour, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error deleting hour'], 500);
+        }
+    }
 }
