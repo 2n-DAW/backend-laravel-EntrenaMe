@@ -5,6 +5,7 @@ use App\Http\Controllers\SportController;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\CourtHourController;
+use App\Http\Controllers\UserController;
 
 
 // Route::post('sports', function()
@@ -46,4 +47,9 @@ Route::prefix('courtsHours')->group(function () {
     Route::delete('/{id}', [CourtHourController::class, 'delete']); //Delete court hour by id
     Route::get('/court/{id_court}', [CourtHourController::class, 'getByCourtId']); //Get court hours by court id
     Route::get('/hour/{id_hour}', [CourtHourController::class, 'getByHourId']); //Get court hours by hour id
+});
+
+Route::prefix('user')-> group(function(){
+    Route::post('/register', [UserController::class, 'register']);
+
 });
