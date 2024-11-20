@@ -10,8 +10,11 @@ class Hour extends Model
     use HasFactory;
 
     protected $table = 'hours';
+    protected $primaryKey = 'id_hour';
+    public $timestamps = false;
 
     protected $fillable = [
+        'id_hour',
         'slot_hour',
     ];
 
