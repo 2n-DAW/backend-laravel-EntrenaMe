@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourtHour;
 use App\Http\Requests\CourtHour\StoreCourtHourRequest;
+use App\Http\Requests\CourtHour\UpdateCourtHourRequest;
 
 class CourtHourController extends Controller
 {
@@ -42,4 +43,19 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error fetching court'], 500);
         }
     }
+    
+     public function update(UpdateCourtHourRequest $request)
+    {
+        try {
+            $validated = $request->validated();
+            $court = CourtHour::with(['Court', 'Hour'])->find($validated['id_court_hour']);
+            $court->update($validated);
+            return response()->json($court, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error updating court'], 500);
+        }
+    }
+    
+    
+    
 }

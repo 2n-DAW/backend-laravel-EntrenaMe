@@ -42,4 +42,5 @@ Route::prefix('courtsHours')->group(function () {
     Route::post('/', [CourtHourController::class, 'store']); //Create court hours
     Route::get('/', [CourtHourController::class, 'getAll']); //Get all court hours
     Route::get('/{id}', [CourtHourController::class, 'getById']); //Get court hour by id
+    Route::put('/', [CourtHourController::class, 'update']); //Update court hour by id
 });
