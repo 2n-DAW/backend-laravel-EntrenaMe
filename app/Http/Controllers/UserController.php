@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\JwtUtils;
 use App\Models\User;
 use App\Models\Admin;
 use App\Http\Requests\User\RegisterUserRequest;
 use App\Http\dto\UserDTO;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 
 class UserController extends Controller
 {
@@ -43,4 +49,29 @@ class UserController extends Controller
             return response()->json(['message' => 'Error to create user', 'error' => $e->getMessage()], 400);
         }
     }
+    
+
+public function login(Request $request)
+{
+    try {
+        $user = User::where('email', $request->email)->first();
+        
+        if(!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        
+        if(!Hash::check($request->password, $user->password)) {
+            return response()->json(['message' => 'Invalid password'], 401);
+        }
+        
+        $token_jwt = JwtUtils::generateToken($user);
+        
+        $user->token = $token_jwt;
+        
+        return response()->json($user, 200);
+        
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error to login user', 'error' => $e->getMessage()], 400);
+    }
+}
 }
