@@ -9,12 +9,14 @@ class Sport extends Model
     use HasFactory;
 
     protected $table = 'sports';
-
+    protected $primaryKey = 'id_sport';
     protected $fillable = [
         'n_sport',
         'img_sport',
         'slug_sport',
     ];
+    public $timestamps = false;
+
 
     public function courts()
     {
