@@ -28,7 +28,7 @@ public function store(StoreSportRequest $request)
 }
 
     
-    public function getAll()
+    public function getAll() 
     {
         try {
             $sports = Sport::all();
