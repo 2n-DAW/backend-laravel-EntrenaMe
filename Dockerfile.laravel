@@ -1,0 +1,53 @@
+# Usa una imagen oficial de PHP (Debian) con soporte para Laravel
+FROM php:8.3-fpm
+
+# Instala dependencias necesarias para Debian
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl \
+    libonig-dev
+
+# Limpia los archivos temporales y optimiza el entorno
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Instala extensiones de PHP
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# Instala Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Establece directorio de trabajo
+WORKDIR /var/www
+
+# Copia el actual proyecto
+COPY . .
+
+# Copia el archivo .env
+COPY .env.example .env
+
+# Copia los permisos de directorio de la actual aplicación
+COPY --chown=www-data:www-data . /var/www
+
+# Cambia el actual usuario a www-data
+USER www-data
+
+# Instala las dependencias a través de Composer
+# RUN composer install
+
+# Genera la clave de aplicación de Laravel
+RUN php artisan key:generate
+
+# # Expone el puerto 8000
+EXPOSE 8000
+
+# Inicia servidor Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
