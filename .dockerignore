@@ -2,7 +2,7 @@
 node_modules/
 
 # Ignorar el directorio de dependencias de Laravel
-# vendor/*
+vendor/*
 
 # Ignorar directorios de caché y logs de Laravel
 # storage/*
@@ -31,5 +31,8 @@ Thumbs.db
 *.bak
 *.swp
 
-# Ignorar git
+# Archivos de control de versiones
 .git/
+.gitignore
+.svn/
+.hg/

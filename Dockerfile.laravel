@@ -41,7 +41,7 @@ COPY --chown=www-data:www-data . /var/www
 USER www-data
 
 # Instala las dependencias a través de Composer
-# RUN composer install
+RUN composer install
 
 # Genera la clave de aplicación de Laravel
 RUN php artisan key:generate
