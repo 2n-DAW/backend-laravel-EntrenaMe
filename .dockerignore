@@ -1,0 +1,38 @@
+# Ignorar el directorio de dependencias de Node.js
+node_modules/
+
+# Ignorar el directorio de dependencias de Laravel
+vendor/*
+
+# Ignorar directorios de caché y logs de Laravel
+# storage/*
+# bootstrap/cache/*
+
+# Ignorar archivos de configuración del entorno local (si los tienes)
+.env
+.env.local
+.env.testing
+.env.production
+
+# Ignorar archivos de configuración de IDEs y editores
+.idea/
+.vscode/
+/*.sublime-project
+/*.sublime-workspace
+
+# Ignorar directorios de base de datos locales
+database/*.sqlite
+
+# Ignorar archivos y directorios relacionados con la construcción del contenedor
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de backup
+*.bak
+*.swp
+
+# Archivos de control de versiones
+.git/
+.gitignore
+.svn/
+.hg/
