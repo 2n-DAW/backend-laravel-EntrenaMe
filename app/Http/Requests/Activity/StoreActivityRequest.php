@@ -16,8 +16,18 @@ class StoreActivityRequest extends FormRequest
         return [
             'id_user_instructor' => 'required|integer',
             'n_activity' => 'required|string|max:255',
-            'spots' => 'required|integer'
-
+            'spots' => 'required|integer',
+            'description' => 'nullable|string|max:255',
+            'img_activity' => 'nullable|string|max:255',
+            'slot_hour' => 'required|string|max:255',
         ];
+    }
+    
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'description' => $this->description ?? '',
+            'img_activity' => $this->img_activity ?? 'activity.png',
+        ]);
     }
 }

@@ -17,6 +17,9 @@ class Activity extends Model
         'n_activity',
         'spots',
         'slug_activity',
+        'description',
+        'img_activity',
+        'slot_hour'
     ];
 
     public function instructor()
@@ -28,4 +31,5 @@ class Activity extends Model
     {
         return $this->hasMany(Inscription::class, 'id_activity');
     }
+    
 }
