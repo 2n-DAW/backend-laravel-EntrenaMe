@@ -10,9 +10,16 @@ class Month extends Model
     use HasFactory;
 
     protected $table = 'months';
+    protected $primaryKey = 'id_month';
+    public $timestamps = false;
 
     protected $fillable = [
         'n_month',
         'slug_month',
     ];
+    
+    public function courtHours()
+    {
+        return $this->hasMany(CourtHour::class, 'id_month');
+    }
 }

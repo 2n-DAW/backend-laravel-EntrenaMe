@@ -21,9 +21,4 @@ class Instructor extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
-
-    public function activities()
-    {
-        return $this->hasMany(Activity::class, 'id_user_instructor');
-    }
 }

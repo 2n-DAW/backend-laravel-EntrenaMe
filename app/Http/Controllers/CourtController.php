@@ -14,6 +14,7 @@ class CourtController extends Controller
     public function store(StoreCourtRequest $request)
     {
         try {
+            error_log('Creating court');
             $validated = $request->validated();
             $validated['slug_court'] = utils::getSlug($validated['n_court']);
             $court = Court::create($validated);

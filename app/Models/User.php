@@ -40,4 +40,9 @@ class User extends Model
     {
         return $this->hasMany(Booking::class, 'id_user');
     }
+    
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'id_user_instructor');
+    }
 }

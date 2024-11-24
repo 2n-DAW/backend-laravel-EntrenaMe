@@ -9,17 +9,19 @@ class Activity extends Model
     use HasFactory;
 
     protected $table = 'activities';
+    protected $primaryKey = 'id_activity';
+    public $timestamps = false;
 
     protected $fillable = [
         'id_user_instructor',
-        'n_activities',
+        'n_activity',
         'spots',
         'slug_activity',
     ];
 
     public function instructor()
     {
-        return $this->belongsTo(Instructor::class, 'id_user_instructor');
+        return $this->belongsTo(User::class, 'id_user_instructor');
     }
 
     public function inscriptions()
