@@ -27,7 +27,10 @@ class HourController extends Controller
     {
         try {
             $hours = Hour::all();
-            return response()->json($hours, 200);
+            
+            $resp = ['hours' => $hours];
+            
+            return response()->json($resp, 200);
         } catch (\Exception $e) {
             error_log($e->getMessage());
             return response()->json(['error' => 'Error getting hours'], 500);

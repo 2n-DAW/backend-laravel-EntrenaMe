@@ -20,6 +20,7 @@ class StoreActivityRequest extends FormRequest
             'description' => 'nullable|string|max:255',
             'img_activity' => 'nullable|string|max:255',
             'slot_hour' => 'required|string|max:255',
+            'week_day' => 'required|string|max:255',
         ];
     }
     

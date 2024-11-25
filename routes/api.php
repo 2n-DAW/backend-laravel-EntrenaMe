@@ -56,8 +56,9 @@ Route::prefix('user')-> group(function(){
     Route::post('/login', [UserController::class, 'login']);
 });
 
-Route::prefix('activity')->group(function(){
+Route::prefix('activities')->group(function(){
     Route::post('/', [ActivityController::class, 'store']);
+    Route::get('/', [ActivityController::class, 'getAll']);
 });
 
 Route::prefix('months')->group(function(){

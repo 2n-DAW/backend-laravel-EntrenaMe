@@ -14,11 +14,9 @@ class CourtController extends Controller
     public function store(StoreCourtRequest $request)
     {
         try {
-            error_log('Creating court');
             $validated = $request->validated();
             $validated['slug_court'] = utils::getSlug($validated['n_court']);
             $court = Court::create($validated);
-            error_log('store' . $court);
             return response()->json($court, 201);
         } catch (\Exception $e) {
             error_log($e->getMessage());
@@ -30,7 +28,10 @@ class CourtController extends Controller
     {
         try {
             $courts = Court::all();
-            return response()->json($courts, 200);
+            
+            $resp = ['courts' => $courts];
+            
+            return response()->json($resp, 200);
         } catch (\Exception $e) {
             error_log($e->getMessage());
             return response()->json(['error' => 'Error getting courts'], 500);

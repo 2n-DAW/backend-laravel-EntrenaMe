@@ -19,7 +19,8 @@ class Activity extends Model
         'slug_activity',
         'description',
         'img_activity',
-        'slot_hour'
+        'slot_hour',
+        'week_day',
     ];
 
     public function instructor()

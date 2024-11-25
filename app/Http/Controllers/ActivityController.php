@@ -25,4 +25,18 @@ class ActivityController extends Controller
             return response()->json(['error' => 'Error creating activity'], 500);
         }
     }
+    
+    public function getAll()
+    {
+        try {
+            $activities = Activity::all();
+            
+            $resp = ['activities' => $activities];
+            
+            return response()->json($resp, 200);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error getting activities'], 500);
+        }
+    }
 }
