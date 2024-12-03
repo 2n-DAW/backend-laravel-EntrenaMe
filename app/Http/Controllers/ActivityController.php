@@ -29,8 +29,8 @@ class ActivityController extends Controller
     public function getAll()
     {
         try {
-            $activities = Activity::all();
-            
+            $activities = Activity::with(['instructor', 'sport'])->get();
+    
             $resp = ['activities' => $activities];
             
             return response()->json($resp, 200);

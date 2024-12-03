@@ -21,11 +21,17 @@ class Activity extends Model
         'img_activity',
         'slot_hour',
         'week_day',
+        'id_sport',
     ];
 
     public function instructor()
     {
         return $this->belongsTo(User::class, 'id_user_instructor');
+    }
+    
+    public function sport()
+    {
+        return $this->belongsTo(Sport::class, 'id_sport');
     }
 
     public function inscriptions()

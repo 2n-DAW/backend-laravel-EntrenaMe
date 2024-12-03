@@ -22,4 +22,9 @@ class Sport extends Model
     {
         return $this->belongsToMany(Court::class, 'courts_sports', 'id_sport', 'id_court');
     }
+    
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'id_sport');
+    }
 }
