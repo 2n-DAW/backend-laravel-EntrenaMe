@@ -32,7 +32,10 @@ public function store(StoreSportRequest $request)
     {
         try {
             $sports = Sport::all();
-            return response()->json($sports, 200);
+            
+            $resp = ['sports' => $sports];
+            
+            return response()->json($resp, 200);
         } catch (\Exception $e) {
             error_log( $e->getMessage());
             return response()->json(['error' => 'Error getting sports'], 500);

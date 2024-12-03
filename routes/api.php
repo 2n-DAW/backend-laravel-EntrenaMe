@@ -6,6 +6,8 @@ use App\Http\Controllers\CourtController;
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\CourtHourController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\MonthController;
 
 
 // Route::post('sports', function()
@@ -52,4 +54,13 @@ Route::prefix('courtsHours')->group(function () {
 Route::prefix('user')-> group(function(){
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/login', [UserController::class, 'login']);
+});
+
+Route::prefix('activities')->group(function(){
+    Route::post('/', [ActivityController::class, 'store']);
+    Route::get('/', [ActivityController::class, 'getAll']);
+});
+
+Route::prefix('months')->group(function(){
+    Route::post('/', [MonthController::class, 'store']);
 });
