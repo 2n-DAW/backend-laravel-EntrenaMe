@@ -15,6 +15,9 @@ use App\Http\Controllers\MonthController;
 //     return response()->json(['message' => 'Not Found'], 404);
 // });
 
+// Route::group(['middleeare' => ['cors' , 'admin']], function () {
+    //Rutas a las que se permitirá acceso
+
 Route::prefix('sports')->group(function () {
     Route::post('/', [SportController::class, 'store']); //Create sport
     Route::get('/', [SportController::class, 'getAll']); //Get all sports
@@ -51,10 +54,7 @@ Route::prefix('courtsHours')->group(function () {
     Route::get('/hour/{id_hour}', [CourtHourController::class, 'getByHourId']); //Get court hours by hour id
 });
 
-Route::prefix('user')-> group(function(){
-    Route::post('/register', [UserController::class, 'register']);
-    Route::post('/login', [UserController::class, 'login']);
-});
+
 
 Route::prefix('activities')->group(function(){
     Route::post('/', [ActivityController::class, 'store']);
@@ -63,4 +63,12 @@ Route::prefix('activities')->group(function(){
 
 Route::prefix('months')->group(function(){
     Route::post('/', [MonthController::class, 'store']);
+});
+
+// });
+
+
+Route::prefix('user')-> group(function(){
+    Route::post('/register', [UserController::class, 'register']);
+    Route::post('/login', [UserController::class, 'login']);
 });
