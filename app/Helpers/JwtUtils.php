@@ -11,7 +11,9 @@ class JwtUtils
 
         $payload = [
             'iss' => "your-issuer", 
-            'sub' => $user->id_user, 
+            'sub' => $user->id_user,
+            'img_user' => $user->img_user,
+            'id_user' => $user->id_user,
             'email' => $user->email, 
             'username' => $user->username, 
             'type_user' => $user->type_user,

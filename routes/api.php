@@ -63,6 +63,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::prefix('months')->group(function () {
         Route::post('/', [MonthController::class, 'store']);
     });
+    
+    Route::prefix('user')->group(function () {
+        Route::get('/currentUser', [UserController::class, 'gerCurrentUser']);
+    });
 });
 
 

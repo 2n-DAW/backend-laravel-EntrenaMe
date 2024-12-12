@@ -33,6 +33,9 @@ class isAdmin
                 ], 401);
             }
 
+            $request->attributes->set('user', $decodedToken);
+
+            
             // Continuar con la solicitud
             return $next($request);
         } catch (ExpiredException $e) {
