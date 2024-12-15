@@ -19,6 +19,10 @@ class User extends Model
         'username',
         'password',
         'type_user',
+        'name',
+        'surname',
+        'is_active',
+        'is_deleted',
     ];
 
     public function admin()

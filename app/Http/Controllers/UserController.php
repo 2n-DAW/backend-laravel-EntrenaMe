@@ -62,7 +62,6 @@ class UserController extends Controller
             }
 
             $token_jwt = JwtUtils::generateToken($user);
-            // $token_jwt = auth('api')->attempt($request->only(['username', 'password']));
 
             $user->token = $token_jwt;
             

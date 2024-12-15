@@ -21,6 +21,14 @@ class UserDTO
             'username' => $user->username,
             'type_user' => $user->type_user,
             'token' => $token,
+            'name' => $user->name,
+            'surname' => $user->surname,
+            'is_active' => $user->is_active,
+            'is_deleted' => $user->is_deleted,
+            'admin' => [
+                'id_admin' => $user->admin->id_admin,
+                'id_user' => $user->admin->id_user,
+            ],
         ];
     }
     
