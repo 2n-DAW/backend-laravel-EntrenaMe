@@ -51,6 +51,8 @@ Route::group(['middleware' => ['admin']], function () {
         Route::delete('/{id}', [CourtHourController::class, 'delete']); //Delete court hour by id
         Route::get('/court/{id_court}', [CourtHourController::class, 'getByCourtId']); //Get court hours by court id
         Route::get('/hour/{id_hour}', [CourtHourController::class, 'getByHourId']); //Get court hours by hour id
+        Route::post('/array', [CourtHourController::class, 'createByArray']); //Get court hours by month id
+        Route::post('/array/delete', [CourtHourController::class, 'deleteByArray']); //Delete court hours by court id
     });
 
 
