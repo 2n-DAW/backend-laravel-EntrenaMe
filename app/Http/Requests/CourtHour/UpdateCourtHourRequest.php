@@ -17,7 +17,8 @@ class UpdateCourtHourRequest extends FormRequest
             'id_court_hour' => 'required|integer',
             'id_court' => 'nullable|integer',
             'id_hour' => 'nullable|integer',
-            'day_number' => 'nullable|integer'
+            'day_number' => 'nullable|integer',
+            'year' => 'nullable|integer',
         ];
     }
 }

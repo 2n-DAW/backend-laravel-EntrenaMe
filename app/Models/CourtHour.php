@@ -23,6 +23,7 @@ class CourtHour extends Model
         'id_month',
         'day_number',
         'slug_court_hour',
+        'year',
     ];
 
     public function court()
