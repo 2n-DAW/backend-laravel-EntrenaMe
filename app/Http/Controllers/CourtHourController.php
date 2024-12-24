@@ -26,9 +26,9 @@ class CourtHourController extends Controller
     {
         try {
             $courts_hours = CourtHour::with(['Court', 'Hour'])->get();
-            
+
             $resp = ['courts_hours' => $courts_hours];
-            
+
             return response()->json($resp, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error fetching courts_hours'], 500);
@@ -44,8 +44,8 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error fetching court_hour'], 500);
         }
     }
-    
-     public function update(UpdateCourtHourRequest $request)
+
+    public function update(UpdateCourtHourRequest $request)
     {
         try {
             $validated = $request->validated();
@@ -56,8 +56,8 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error updating court_hour'], 500);
         }
     }
-    
-      public function delete($id_court_hour)
+
+    public function delete($id_court_hour)
     {
         try {
             $court = CourtHour::find($id_court_hour);
@@ -67,7 +67,7 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error deleting court_hour'], 500);
         }
     }
-    
+
     public function getByCourtId($id_court)
     {
         try {
@@ -77,7 +77,7 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error fetching court_hour'], 500);
         }
     }
-    
+
     public function getByHourId($id_hour)
     {
         try {
@@ -87,5 +87,4 @@ class CourtHourController extends Controller
             return response()->json(['error' => 'Error fetching court_hour'], 500);
         }
     }
-    
 }

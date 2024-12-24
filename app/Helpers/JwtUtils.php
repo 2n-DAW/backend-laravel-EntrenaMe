@@ -18,7 +18,7 @@ class JwtUtils
             'username' => $user->username, 
             'type_user' => $user->type_user,
             'iat' => time(), 
-            'exp' => time() + 60*60 
+            'exp' => time() + env('JWT_EXPIRE_TIME')
         ];
         return JWT::encode($payload, $key, 'HS256');
     }
