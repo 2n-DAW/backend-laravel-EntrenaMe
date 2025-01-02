@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class User extends Model
 {
@@ -11,6 +12,8 @@ class User extends Model
     protected $table = 'users';
     protected $primaryKey = 'id_user';
     public $timestamps = false;
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $fillable = [
         'id_user',
@@ -25,6 +28,16 @@ class User extends Model
         'is_deleted',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($model) {
+            $model->id_user = Str::uuid()->toString();
+        });
+    }
+
+    // ... existing relationships remain unchanged ...
     public function admin()
     {
         return $this->hasOne(Admin::class, 'id_user');
