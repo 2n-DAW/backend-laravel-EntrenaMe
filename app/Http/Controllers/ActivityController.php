@@ -39,4 +39,19 @@ class ActivityController extends Controller
             return response()->json(['error' => 'Error getting activities'], 500);
         }
     }
+    
+    public function getById($id)
+    {
+        try {
+            $activity = Activity::with(['instructor', 'sport'])->find($id);
+            if ($activity) {
+                return response()->json($activity, 200);
+            } else {
+                return response()->json(['error' => 'Activity not found'], 404);
+            }
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error getting activity'], 500);
+        }
+    }
 }

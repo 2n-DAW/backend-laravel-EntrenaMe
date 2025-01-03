@@ -60,6 +60,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::prefix('activities')->group(function () {
         Route::post('/', [ActivityController::class, 'store']);
         Route::get('/', [ActivityController::class, 'getAll']);
+        Route::get('/{id}', [ActivityController::class, 'getById']);
     });
 
     Route::prefix('months')->group(function () {
