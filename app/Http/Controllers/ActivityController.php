@@ -72,4 +72,20 @@ class ActivityController extends Controller
             return response()->json(['error' => 'Error updating activity'], 500);
         }
     }
+    
+    public function delete($id)
+    {
+        try {
+            $activity = Activity::find($id);
+            if ($activity) {
+                $activity->delete();
+                return response()->json(['message' => 'Activity deleted'], 200);
+            } else {
+                return response()->json(['error' => 'Activity not found'], 404);
+            }
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error deleting activity'], 500);
+        }
+    }
 }
