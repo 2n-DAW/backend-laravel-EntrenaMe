@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\utils;
 use App\Http\Requests\Activity\StoreActivityRequest;
+use App\Http\Requests\Activity\UpdateActivityRequest;
 use App\Models\Activity;
 
 
@@ -52,6 +53,23 @@ class ActivityController extends Controller
         } catch (\Exception $e) {
             error_log($e->getMessage());
             return response()->json(['error' => 'Error getting activity'], 500);
+        }
+    }
+    
+    public function update(UpdateActivityRequest $request)
+    {
+        try {
+            $validated = $request->validated();
+            $activity = Activity::with(['instructor', 'sport'])->find($validated['id_activity']);
+            if ($activity) {
+                $activity->update($validated);
+                return response()->json($activity, 200);
+            } else {
+                return response()->json(['error' => 'Activity not found'], 404);
+            }
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error updating activity'], 500);
         }
     }
 }
