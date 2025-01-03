@@ -98,7 +98,7 @@ class CourtHourController extends Controller
                 'courts_hours.*.id_court' => 'required|integer|exists:courts,id_court',
                 'courts_hours.*.id_hour' => 'required|integer',
                 'courts_hours.*.day_number' => 'required|integer|between:1,31',
-                'courts_hours.*.id_month' => 'required|integer|between:1,12',
+                'courts_hours.*.id_month' => 'required|integer|between:0,11',
                 'courts_hours.*.year' => 'required|integer'
             ]);
     
