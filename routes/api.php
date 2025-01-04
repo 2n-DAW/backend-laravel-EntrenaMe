@@ -71,6 +71,7 @@ Route::group(['middleware' => ['admin']], function () {
     
     Route::prefix('user')->group(function () {
         Route::get('/currentUser', [UserController::class, 'gerCurrentUser']);
+        Route::get('/instructors', [UserController::class, 'getInstructors']);
     });
 });
 

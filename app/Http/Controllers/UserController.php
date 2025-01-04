@@ -92,4 +92,18 @@ class UserController extends Controller
         }
     }
     
+    public function getInstructors()
+    {
+        try {
+            $instructors = User::with(['instructor'])->where('type_user', 'instructor')->get();
+    
+            $instructors = UserDTO::instructorsDto($instructors);
+            
+            return response()->json([
+                'instructors' => $instructors
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error to get instructors', 'error' => $e->getMessage()], 400);
+        }
+    }
 }
