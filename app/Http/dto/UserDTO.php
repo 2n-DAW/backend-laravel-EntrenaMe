@@ -45,4 +45,27 @@ class UserDTO
             ],
         ];
     }
+    
+    public static function instructorsDto($instructors)
+    {
+        $instructorsDto = [];
+        
+        foreach ($instructors as $instructor) {
+            $instructorsDto[] = [
+                'img_user' => $instructor->img_user,
+                'email' => $instructor->email,
+                'name' => $instructor->name,
+                'surname' => $instructor->surname,
+                'birthday' => $instructor->birthday,
+                'username' => $instructor->username,
+                'type_user' => $instructor->type_user,
+                'instructor' => [
+                    'id_instructor' => $instructor->instructor->id_instructor,
+                    'id_user' => $instructor->instructor->id_user,
+                ],
+            ];
+        }
+        
+        return $instructorsDto;
+    }
 }

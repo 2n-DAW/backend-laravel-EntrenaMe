@@ -26,6 +26,7 @@ class User extends Model
         'surname',
         'is_active',
         'is_deleted',
+        'birthday',
     ];
 
     protected static function boot()
