@@ -18,6 +18,7 @@ class StoreCourtHourRequest extends FormRequest
             'id_hour' => 'required|integer',
             'day_number' => 'required|integer',
             'id_month' => 'required|integer',
+            'year' => 'required|integer',
         ];
     }
 }

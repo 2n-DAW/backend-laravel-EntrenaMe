@@ -16,6 +16,7 @@ class Activity extends Model
         'id_user_instructor',
         'n_activity',
         'spots',
+        'spots_available',
         'slug_activity',
         'description',
         'img_activity',
